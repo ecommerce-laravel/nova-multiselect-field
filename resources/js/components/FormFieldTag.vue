@@ -1,7 +1,10 @@
 <template>
   <span class="multiselect__tag">
-    <span v-if="!field.isColorful || !isColor(option.label)">{{ option.label }}</span>
-    <div v-else :style="{ backgroundColor: option.label, width: '20px', height: '20px' }"></div>
+    <div v-if="field?.isColorful && isColor(option.label)" style="display: flex; align-items: center;">
+      <div :style="{ backgroundColor: option.label, width: '20px', height: '20px', marginRight: '5px' }"></div>
+      <span>{{ option.label }}</span>
+    </div>
+    <span v-else>{{ option.label }}</span>
     <i class="multiselect__tag-icon" @click="remove(option)"></i>
   </span>
 </template>
