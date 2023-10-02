@@ -19,7 +19,12 @@
         v-for="(value, i) of values"
         :key="i"
       >
-        {{ value }}
+        <div v-if="field?.isColorful && isColor(value)" style="display: flex; align-items: center;">
+          <div :style="{ backgroundColor: value, width: '20px', height: '20px', marginRight: '5px' }"></div>
+          <span>{{ value }}</span>
+        </div>
+        <span v-else>{{ value }}</span>
+
       </div>
     </div>
   </div>
@@ -30,6 +35,13 @@
 <script>
 export default {
   props: ['field', 'values'],
+
+  methods: {
+    isColor(strColor) {
+      const colorPattern = /^#([0-9a-f]{3}){1,2}$/i;
+      return colorPattern.test(strColor);
+    },
+  }
 };
 </script>
 

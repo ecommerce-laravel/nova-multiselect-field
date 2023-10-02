@@ -61,8 +61,16 @@
             <span>{{ value ? value.label : '' }}</span>
           </template>
 
+          <template #option="{ option }">
+            <div v-if="field?.isColorful && isColor(option.label)" style="display: flex; align-items: center;">
+              <div :style="{ backgroundColor: option.label, width: '20px', height: '20px', marginRight: '5px' }"></div>
+              <span>{{ option.label }}</span>
+            </div>
+            <span v-else>{{ option.label }}</span>
+          </template>
+
           <template #tag="{ option, remove }">
-            <form-multiselect-field-tag :option="option" :remove="remove" />
+            <form-multiselect-field-tag :option="option" :remove="remove" :field="field" />
           </template>
         </multiselect>
 
@@ -400,6 +408,11 @@ export default {
     onSyncedField() {
       this.options = this.currentField.options || [];
       this.setInitialValue();
+    },
+
+    isColor(strColor) {
+      const colorPattern = /^#([0-9a-f]{3}){1,2}$/i;
+      return colorPattern.test(strColor);
     },
   },
 };

@@ -434,4 +434,15 @@ class Multiselect extends Field implements RelatableField
     {
         return $this->withMeta(['asHtml' => true]);
     }
+
+    /**
+     * Display colorful tags instead of HEX value
+     *
+     * @param $isColorful
+     * @return $this
+     */
+    public function asColorful()
+    {
+        return $this->withMeta(['isColorful' => true]);
+    }
 }
