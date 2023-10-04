@@ -29,6 +29,12 @@ __webpack_require__.r(__webpack_exports__);
     value: function value() {
       return this.getValueFromOptions(this.field.value);
     }
+  },
+  methods: {
+    isColor: function isColor(strColor) {
+      var colorPattern = /^#([0-9a-f]{3}){1,2}$/i;
+      return colorPattern.test(strColor);
+    }
   }
 });
 
@@ -547,7 +553,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
 
 var _hoisted_1 = {
-  key: 2
+  key: 2,
+  style: {
+    "display": "flex",
+    "align-items": "center"
+  }
+};
+var _hoisted_2 = {
+  key: 3
 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_Link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Link");
@@ -558,6 +571,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     field: $props.field
   }, {
     value: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+      var _$props$field, _$options$value, _$options$value2;
       return [$props.field.belongsToResourceName && $props.field.viewable && $props.field.value ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_Link, {
         key: 0,
         href: _ctx.$url("/resources/".concat($props.field.belongsToResourceName, "/").concat($props.field.value)),
@@ -572,7 +586,14 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         key: 1,
         field: $props.field,
         values: $options.values
-      }, null, 8 /* PROPS */, ["field", "values"])) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.value && $options.value.label || '—'), 1 /* TEXT */))];
+      }, null, 8 /* PROPS */, ["field", "values"])) : (_$props$field = $props.field) !== null && _$props$field !== void 0 && _$props$field.isColorful && $options.isColor((_$options$value = $options.value) === null || _$options$value === void 0 ? void 0 : _$options$value.label) ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+        style: (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeStyle)({
+          backgroundColor: $options.value.label,
+          width: '20px',
+          height: '20px',
+          marginRight: '5px'
+        })
+      }, null, 4 /* STYLE */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)((_$options$value2 = $options.value) === null || _$options$value2 === void 0 ? void 0 : _$options$value2.label), 1 /* TEXT */)])) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_2, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.value && $options.value.label || '—'), 1 /* TEXT */))];
     }),
 
     _: 1 /* STABLE */
